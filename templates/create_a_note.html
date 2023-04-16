@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <style>
+	body {
+		background: #f1f1f1 url(starting_background.jpg);
+		color: #f1f1f1;
+		background-attachment: fixed;
+		background-repeat: repeat-x;
+	}
+    </style>
+</head>
+<h1>Создать заметку</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <style>
+    p  {
+    color: #666666;
+    }
+    </style>
+    <p>
+        {{ form.heading.label }}<br>
+        {{ form.heading(class="form-control") }}<br>
+        {% for error in form.heading.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.note.label }}<br>
+        {{ form.note(class="form-control") }}<br>
+        {% for error in form.note.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.hashtags.label }}<br>
+        {{ form.hashtags(class="form-control") }}<br>
+        {% for error in form.hashtags.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    <style>
+    button {
+    position: relative;
+      top: 3.5%;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+
+    </style>
+    <button type="submit" name="btn_create" class="btn btn-light">Создать</button>
+</form>
+{% endblock %}

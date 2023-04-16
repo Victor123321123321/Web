@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<html>
+<head>
+    <style>
+	body {
+		background: #f1f1f1 url(starting_background.jpg);
+		color: #f1f1f1;
+		background-attachment: fixed;
+		background-repeat: repeat-x;
+	}
+
+
+
+    </style>
+</head>
+<div>
+    <style>
+    button {
+    position: relative;
+      top: 3.5%;
+      left: 68%;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+
+
+
+    </style>
+    <a href="create_a_note">
+        <button type="button" class="btn btn-light">Создать заметку</button>
+    </a>
+    <a href="delete_a_note">
+        <button type="button" class="btn btn-light">Удалить заметку</button>
+    </a>
+    <a href="start_window">
+        <button type="button" class="btn btn-light">Выйти</button>
+    </a>
+</div>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Поле поиска</title>
+</head>
+
+
+<form action="" method="post" enctype="multipart/form-data">
+    <div class="search-box">
+        <link rel="stylesheet" href="static/css/search_style.css">
+        <input type="text" type="submit" name="find" class="search-txt" placeholder="Type to search"/>
+        <a class="search-btn" type="submit">
+            <i class="fa fa-search" name="btn-search" aria-hidden="true"></i>
+        </a>
+    </div>
+</form>
+
+<body>
+{% for i in records %}
+<div class=box id="div_1" style="color: #666666;
+		padding: 20px 20px 20px 20px;">
+    <link rel="stylesheet" href="static/css/style.css">
+    <p>
+        {{i[0]}}
+    </p>
+    <div id="rectangle" style="position: relative;
+    width: 100%;
+    top: -10px;
+    height: 2px;
+    background: #666666;"></div>
+    <p>
+        {{i[1]}}
+    </p>
+    <p>
+        {{i[2]}}
+    </p>
+    <p>
+        Номер записи: {{i[3]}}
+    </p>
+</div>
+{% endfor %}
+{% if nothing_found == 'Ничего не найдено' %}
+<p align="center">
+    <style>
+    p  {
+    color: #666666;
+    margin: 10;
+    font-size:50px;
+    margin: auto;
+  position: absolute;
+  top: 45%; left: 0; bottom: 0; right: 0;
+    }
+
+
+
+    </style>
+    Ничего не найдено
+    <a href="/main_page">
+        Назад
+    </a>
+</p>
+{% endif %}
+
+</body>
+{% endblock %}
+</html>

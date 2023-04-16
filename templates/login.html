@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Авторизация на Lapis</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.name.label }}<br>
+        {{ form.name(class="form-control") }}<br>
+        {% for error in form.name.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.password.label }}<br>
+        {{ form.password(class="form-control", type="password") }}<br>
+        {% for error in form.password.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <style>
+    button {
+    position: relative;
+      top: 3.5%;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+    </style>
+    <button type="submit" name="btn_login" class="btn btn-light">Войти</button>
+    {{message}}
+</form>
+{% endblock %}
